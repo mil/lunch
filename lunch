@@ -36,12 +36,8 @@ else
   end
   $handlers.push $config['Handlers'][$config['Handlers']['default']] if $handlers.length < 1
 
-  space = $filters[0].include? "://" ? "%20" : " "
-
-  args_output = ""
-  args.each do |arg|
-    args_output += "#{arg}#{space}"
-  end
+  space = ($filters[0].include?("://") ? "%20" : " ")
+  args_output = args.join(space)
 
   command = $filters[0].gsub '%s', args_output
   %x[#{$handlers[0].gsub '%s', command}]

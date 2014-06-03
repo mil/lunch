@@ -22,9 +22,6 @@ else
   end
   $filters.push $config['Filters'][$config['Filters']['default']] if $filters.length < 1
 
-
-  shell = false
-
   # Determine Handlers
   $handlers = []
   args.each_with_index do |arg, i|

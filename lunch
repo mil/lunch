@@ -13,27 +13,26 @@ if $config['Shorthands'].keys.include? args[0]
   %x[#{$config['Shorthands'][args[0]]}]
 else
   # Determine Filters 
-  $filters = []
+  $filter = $config['Filters'][$config['Filters']['default']] 
   args.each_with_index do |arg, i|
     if $config['Filters'].keys.include? arg
       args.delete_at i
-      $filters.push $config['Filters'][arg]
+      $filter = $config['Filters'][arg]
     end
   end
-  $filters.push $config['Filters'][$config['Filters']['default']] if $filters.length < 1
 
   # Determine Handlers
-  $handlers = []
+  $handler = $config['Handlers'][$config['Handlers']['default']] if !$handler
   args.each_with_index do |arg, i|
     if $config['Handlers'].keys.include? arg
-      $filters[0] = "%s" if arg == "sh"
+      $filter = "%s" if arg == "sh"
       args.delete_at i
-      $handlers.push $config['Handlers'][arg]
+      $handler = $config['Handlers'][arg]
     end
   end
-  $handlers.push $config['Handlers'][$config['Handlers']['default']] if $handlers.length < 1
 
-  args_output = args.join($filters[0].include?("://") ? "%20" : " ")
-  command = $filters[0].gsub '%s', args_output
-  %x[#{$handlers[0].gsub '%s', command}]
+  args_output = args.join($filter.include?("://") ? "%20" : " ")
+  command = $filter.gsub '%s', args_output
+  command = "'#{command }'" if $filter.include?("://")
+  %x[#{$handler.gsub '%s', command}]
 end

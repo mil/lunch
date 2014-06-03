@@ -8,17 +8,6 @@ args = ARGV.flat_map do |arg|
   arg.split(" ").length > 1 ? arg.split(" ") : arg
 end
 
-ARGV.each { |arg| 
-  if (arg.split(" ").length > 1) then
-    arg.split(" ").each  do |ar| 
-      args.push ar
-    end
-  else
-      args.push arg
-  end
-}
-
-
 # Executing shorthands
 if $config['Shorthands'].keys.include? args[0]
   %x[#{$config['Shorthands'][args[0]]}]

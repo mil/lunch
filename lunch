@@ -4,15 +4,27 @@ require 'yaml'
 $config_file = "#{ENV['HOME']}/.lunchcfg.yaml"
 $config = YAML.load_file $config_file
 
+args = []
+ARGV.each { |arg| 
+  if (arg.split(" ").length > 1) then
+    arg.split(" ").each  do |ar| 
+      args.push ar
+    end
+  else
+      args.push arg
+  end
+}
+
+
 # Executing shorthands
-if $config['Shorthands'].keys.include? ARGV[0]
-  %x[#{$config['Shorthands'][ARGV[0]]}]
+if $config['Shorthands'].keys.include? args[0]
+  %x[#{$config['Shorthands'][args[0]]}]
 else
   # Determine Filters 
   $filters = []
-  ARGV.each_with_index do |arg, i|
+  args.each_with_index do |arg, i|
     if $config['Filters'].keys.include? arg
-      ARGV.delete_at i
+      args.delete_at i
       $filters.push $config['Filters'][arg]
     end
   end
@@ -23,25 +35,28 @@ else
 
   # Determine Handlers
   $handlers = []
-  ARGV.each_with_index do |arg, i|
+  args.each_with_index do |arg, i|
     if $config['Handlers'].keys.include? arg
       $filters[0] = "%s" if arg == "sh"
-      ARGV.delete_at i
+      args.delete_at i
       $handlers.push $config['Handlers'][arg]
     end
   end
   $handlers.push $config['Handlers'][$config['Handlers']['default']] if $handlers.length < 1
 
-  args = ""
+
   if $filters[0].include? "://"
     space = "%20"
   else
     space = " "
   end
 
-  ARGV.each { |arg| args += "#{arg}#{space}" }
-  command = $filters[0].gsub '%s', args
-  m = $handlers[0].gsub '%s', command
-  p m
-  %x[#{m}]
+  args_output = ""
+  args.each do |arg|
+    args_output += "#{arg}#{space}"
+  end
+
+  command = $filters[0].gsub '%s', args_output
+  m = 
+  %x[#{$handlers[0].gsub '%s', command}]
 end

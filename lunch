@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require 'yaml'
 
-$config_file = "/home/mil/.configuration.yaml"
+$config_file = "#{ENV['HOME']}/.lunchcfg.yaml"
 $config = YAML.load_file $config_file
 
 # Executing shorthands

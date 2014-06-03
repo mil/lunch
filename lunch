@@ -4,7 +4,10 @@ require 'yaml'
 $config_file = "#{ENV['HOME']}/.lunchcfg.yaml"
 $config = YAML.load_file $config_file
 
-args = []
+args = ARGV.flat_map do |arg|
+  arg.split(" ").length > 1 ? arg.split(" ") : arg
+end
+
 ARGV.each { |arg| 
   if (arg.split(" ").length > 1) then
     arg.split(" ").each  do |ar| 

@@ -22,7 +22,7 @@ Handlers:
   sh        : urxvt -e %s
 
 
-Filters:
+Searches:
   default  : gg
 
   # Searches Queries

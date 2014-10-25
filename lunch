@@ -25,12 +25,13 @@ if args.length == 0 then
 end
 
 
-p args
 # Executing shorthands
 if args.length == 1 && !args[0].is_valid_url? && $config['Shorthands'][args[0]]
   cmd = $config['Shorthands'][args[0]]
   args = cmd.split(' ')
 end
+
+p args
 
 # Not a single word query -- so set Search and Handler if possible
 args.each_with_index do |arg, i|

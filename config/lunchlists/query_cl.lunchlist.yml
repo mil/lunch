@@ -1,12 +1,13 @@
-query_cl:
-  appetizer: $applications
-  appetizer_choice: sh
+lunch_lists:
+  query_cl:
+    appetizer: $applications
+    appetizer_choice: sh
 
-  entries:
-    yt: youtube-viewer %s
-    j: z %s & ranger
-    man: urxvt -e man %s
-    cd: urxvt -e ranger %s
-    kill: killall %s
-    workspace: workspace %s
-    ssh: ssh %s
+    entries:
+      yt: youtube-viewer %s
+      j: z %s & ranger
+      man: urxvt -e man %s
+      cd: urxvt -e ranger %s
+      kill: killall %s
+      workspace: workspace %s
+      ssh: ssh %s

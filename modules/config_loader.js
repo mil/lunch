@@ -6,7 +6,7 @@ var yaml = require('js-yaml');
 var read_dir = require('fs-readdir-recursive');
 
 function config_loader(config_dir) {
-  return _.merge.apply({}, 
+  return _.merge.apply({},
     _.map(read_dir(config_dir), function(file) {
       return yaml.safeLoad(
         fs.readFileSync(

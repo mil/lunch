@@ -4,4 +4,6 @@
 var config = require('./modules/config_loader.js')(
   __dirname + '/config'
 );
+
+// canopy peg
 console.log(config);

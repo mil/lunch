@@ -17,5 +17,4 @@ function config_loader(config_dir) {
   );
 }
 
-
 module.exports = config_loader;

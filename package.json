@@ -1,6 +1,7 @@
 {
   "name": "lunch",
   "version": "0.0.0",
+  "preferGlobal": "true",
   "dependencies" : {
     "js-yaml": "3.2.7",
     "fs-readdir-recursive": "0.1.1",

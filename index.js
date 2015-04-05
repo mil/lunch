@@ -60,6 +60,7 @@ _.each(handlers_keys, function(k) {
   command = config.lunch_lists[k].entries[handlers[k]].replace("%s", command);
 });
 command = command.replace("%s", args.join(" "));
+console.log(command);
 
 // run command
 exec(command, function(error, stdout, stderr) {

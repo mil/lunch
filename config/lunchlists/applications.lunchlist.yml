@@ -4,10 +4,19 @@ lunch_lists:
 
     entries:
       surf: surf %s
-      chromium: chromium %s
+      chr: chromium %s
       private: chromium --incognito %s
       ff: firefox %s
       https?: surf %s
       xml: newsreader %s
-      sh: urxvt -e %s  # Termial Handlers, launch new term
-      s: exec %s       # Single command run
+
+      term: urxvt -e %s
+      silent: exec %s
+
+  terminal:
+    handled_by: applications
+    default_handler: term
+    entries:
+      editor: vim %s
+      ranger: ranger %s
+      j: j %s

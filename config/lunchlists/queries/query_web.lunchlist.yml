@@ -1,6 +1,6 @@
 lunch_lists:
   query_web:
-    handled_by: $browser
+    handled_by: applications
     deafault_handler: surf
 
     entries:

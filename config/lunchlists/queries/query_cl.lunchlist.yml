@@ -1,6 +1,6 @@
 lunch_lists:
   query_cl:
-    handled_by: $applications
+    handled_by: applications
     default_handler: sh
 
     entries:

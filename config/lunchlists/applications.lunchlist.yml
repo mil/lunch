@@ -1,6 +1,6 @@
 lunch_lists:
   applications:
-    default_entree: surf
+    # no 'handled_by', or 'default_handler' for top level!
 
     entries:
       surf: surf %s

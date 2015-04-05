@@ -1,0 +1,10 @@
+lunch_lists:
+  ssh:
+    handled_by: $query_cl
+    default_handler: ssh
+
+    entries:
+      site5: miles@userbound.com
+      dreamhost: bladdo@bladdo.net
+      x300: mil@x300
+      x40: mil@x40

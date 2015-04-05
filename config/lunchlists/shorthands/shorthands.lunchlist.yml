@@ -1,29 +1,13 @@
 lunch_lists:
-  ssh:
-    appetizer_choice: ssh
-    appetizer: $query_cl
-
-    site5: miles@userbound.com
-    dreamhost: bladdo@bladdo.net
-    x300: mil@x300
-    x40: mil@x40
-
-  edit:
-    appetizer_choice: editor
-    appetizer: $query_cl
-
-    config: /home/mil/.lunchcfg.yaml
-
   misc:
 
-    # Filebrowser
-    ranger      : sh ranger
-    brows       : http://localhost:3400
-    # Window Manager
+   # Window Manager
     down        : sh i3 focus down
     up          : sh i3 focus up
     left        : sh i3 focus left
     right       : sh i3 focus right
+
+
     # Tmux Sessions
     notes       : sh tmx notes
     music       : sh dtach -A /home/mil/IPC/Sockets/music fish -c dvtm
@@ -106,3 +90,8 @@ lunch_lists:
     # Skanote
     skanote-dev : sh chromium --app=http://localhost:9292
     skanote     : sh chromium --app=http://morning-plains-8512.herokuapp.com
+
+    # Filebrowser
+    ranger      : sh ranger
+    brows       : http://localhost:3400
+ 

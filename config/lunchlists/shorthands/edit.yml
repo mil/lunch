@@ -1,0 +1,7 @@
+lunch_lists:
+  edit:
+    handled_by: editor
+    deafault_handler: $query_cl
+
+    entries:
+      config: /home/mil/.lunchcfg.yaml

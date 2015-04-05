@@ -1,4 +1,9 @@
+root_handler:
+  lunch_list: applications
+  handler: surf
+
 lunch_menu:
   - query_web
   - query_cl
-  - shorthands
+  - ssh
+  - edit

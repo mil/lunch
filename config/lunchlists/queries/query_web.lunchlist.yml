@@ -1,7 +1,8 @@
 lunch_lists:
   query_web:
-    appetizer: $browser
-    default_appetizer: surf
+    handled_by: $browser
+    deafault_handler: surf
+
     entries:
       ddg: https://duckduckgo.com/?q=%s
       gg: https://google.com/search?q=%s

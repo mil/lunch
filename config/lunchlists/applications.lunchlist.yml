@@ -11,12 +11,4 @@ lunch_lists:
       xml: newsreader %s
 
       term: urxvt -e %s
-      silent: exec %s
-
-  terminal:
-    handled_by: applications
-    default_handler: term
-    entries:
-      editor: vim %s
-      ranger: ranger %s
-      j: j %s
+      sh: exec %s

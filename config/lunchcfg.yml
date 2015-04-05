@@ -5,6 +5,13 @@ root_handler:
 lunch_menu:
   - query_web
   - query_cl
-  - ssh
-  - edit
+
+  - ssh_shorthands
+  - edit_shorthands
+  - wm_shorthands
+  - term_shorthands
+  - ssh_shorthands
+  - sh_shorthands
+  - bookmark_shorthands
+
   - applications

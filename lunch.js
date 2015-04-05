@@ -2,6 +2,8 @@
 'use strict'
 var _ = require('lodash');
 var path = require('path');
+var sys = require('sys')
+var exec = require('child_process').exec;
 
 var args = process.argv.slice(2);
 var config_folder_path = path.join(__dirname, 'config');
@@ -10,7 +12,6 @@ var config = require('./modules/config_loader.js')(config_folder_path);
 
 // handlers container, and add default
 var handlers = {};
-handlers[config.root_handler.lunch_list] = config.root_handler.default_handler;
 
 // sub in handlers
 for (var arg = 0; arg < args.length; arg++) {
@@ -25,11 +26,35 @@ for (var arg = 0; arg < args.length; arg++) {
   });
 };
 
+function ensure_parent_handler_present() {
+  var rerun = false;
+  _.each(_.keys(handlers).reverse(), function(handler) {
+    var parent_handler = config.lunch_lists[handler].handled_by;
+    var parent_handler_default  = config.lunch_lists[handler].default_handler;
+    if (parent_handler && parent_handler_default) {
+      if (!(parent_handler in handlers)) { rerun = true; }
+      handlers[parent_handler] = parent_handler_default;
+    }
+  });
+  return rerun;
+}
+var rerun_expand = true;
+while (rerun_expand) { rerun_expand = ensure_parent_handler_present(); }
+
+// add in root handler if its not already
+if (!(config.root_handler.lunch_list in handlers)) {
+  handlers[config.root_handler.lunch_list] = config.root_handler.default_handler;
+}
+
 // assemble command
 var command = "%s";
 _.each(handlers, function(value, key) {
-  command = command.replace("%s", config.lunch_lists[key].entries[value]);
+  command = config.lunch_lists[key].entries[value].replace("%s", command);
 });
-
 command = command.replace("%s", args.join(" "));
+
 console.log(command);
+// run command
+exec(command, function(error, stdout, stderr) {
+  sys.puts(stdout);
+});

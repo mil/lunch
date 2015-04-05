@@ -1,5 +1,5 @@
 lunch_lists:
-  edit:
+  edit_shorthands:
     handled_by: terminal
     deafault_handler: editor
 

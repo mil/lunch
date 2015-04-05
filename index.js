@@ -31,15 +31,16 @@ for (var arg = 0; arg < args.length; arg++) {
     }
   });
 };
-
 function ensure_parent_handler_present() {
   var rerun = false;
   _.each(_.keys(handlers).reverse(), function(handler) {
     var parent_handler = config.lunch_lists[handler].handled_by;
     var parent_handler_default  = config.lunch_lists[handler].default_handler;
     if (parent_handler && parent_handler_default) {
-      if (!(parent_handler in handlers)) { rerun = true; }
-      handlers[parent_handler] = parent_handler_default;
+      if (!(parent_handler in handlers)) {
+        rerun = true;
+        handlers[parent_handler] = parent_handler_default;
+      }
     }
   });
   return rerun;

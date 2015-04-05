@@ -15,6 +15,10 @@ var config = require('./modules/config_loader.js')(config_folder_path);
 // handlers container, and add default
 var handlers = {};
 
+if (args.length === 0) {
+ process.exit();
+}
+
 // sub in handlers
 for (var arg = 0; arg < args.length; arg++) {
   _.each(config.lunch_menu, function(menu) {

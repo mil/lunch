@@ -46,14 +46,19 @@ if (!(config.root_handler.lunch_list in handlers)) {
   handlers[config.root_handler.lunch_list] = config.root_handler.default_handler;
 }
 
+// ensure correct ordering
+var handlers_keys = _.keys(handlers).sort(function(a, b) {
+  var lists = _.keys(config.lunch_lists);
+  return lists.indexOf(a) > lists.indexOf(b) ? -1 : 1;
+});
+
 // assemble command
 var command = "%s";
-_.each(handlers, function(value, key) {
-  command = config.lunch_lists[key].entries[value].replace("%s", command);
+_.each(handlers_keys, function(k) {
+  command = config.lunch_lists[k].entries[handlers[k]].replace("%s", command);
 });
 command = command.replace("%s", args.join(" "));
 
-console.log(command);
 // run command
 exec(command, function(error, stdout, stderr) {
   sys.puts(stdout);

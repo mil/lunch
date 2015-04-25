@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 'use strict'
-//var path = require('path');
 var exec = require('child_process').exec;
 var argv = require('minimist')(process.argv.slice(2));
 var basedir = require('xdg').basedir;

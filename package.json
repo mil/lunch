@@ -5,7 +5,7 @@
   "dependencies": {
     "js-yaml": "3.2.7",
     "fs-readdir-recursive": "0.1.1",
-    "lodash": "3.6.0",
+    "lodash": "3.7.0",
     "xdg": "0.1.1",
     "minimist": "^1.1.1"
   },

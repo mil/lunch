@@ -9,11 +9,17 @@ var basedir = require('xdg').basedir;
 
 var config_folder_path = argv['config-folder'] ?
   argv['config-folder'] : basedir.configPath('lunch');
-
-
 var config = require('./lib/config_loader.js')(config_folder_path);
-if (argv._.length === 0) { process.exit(); }
-var command = require('./lib/create_command.js')(argv._, config);
-exec(command, function(error, stdout, stderr) {
-  sys.puts(stdout);
-});
+
+
+if ('token-list' in argv) {
+  sys.log(
+    require('./lib/token_printer')(config)
+  );
+} else {
+  if (argv._.length === 0) { process.exit(); }
+  var command = require('./lib/create_command.js')(argv._, config);
+  exec(command, function(error, stdout, stderr) {
+    sys.log(stdout);
+  });
+}

@@ -1,5 +1,7 @@
 lunch
 =====
-A string handler / command parser for folks building their own DE's. Inspired by cprussin's launch script.
+A lightweight string handler & command parser for creating a top-level DSL for launching applications, bookmarks, etc..
 
-A work in progress.
+Documentation to come soon.
+
+`npm install -g mils-lunch`

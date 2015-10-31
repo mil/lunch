@@ -1,6 +1,6 @@
 {
   "name": "mils-lunch",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "preferGlobal": "true",
   "dependencies": {
     "js-yaml": "3.2.7",
